@@ -31,6 +31,48 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Then /^I should see "([^"]*)" within "([^"]*)"$/ do |text, selector|
+  page.should have_css(selector, :text => text)
+end
+
+
+
+Given /^an article has been posted$/ do
+  a=Article.new( { :title=>"A big article",
+                    :body=> 'A content with several data',
+                    :extended =>  'extended content for fun',
+                    :permalink => 'a-big-article',
+                    :user => User.first,
+                    :allow_comments=>true,
+                    :published =>  true
+                  })
+  a.save!
+
+end
+
+Given /^a non\-admin is logged into the admin panel$/ do
+  visit '/accounts/login'
+  fill_in 'user_login', :with => 'user'
+  fill_in 'user_password', :with => 'aaaaaaaa'
+  click_button 'Login'
+  if page.respond_to? :should
+    page.should have_content('Login successful')
+  else
+    assert page.has_content?('Login successful')
+  end
+end
+
+
+And /^a non\-admin user exists$/ do
+  User.create!({:login => 'user',
+                :password => 'aaaaaaaa',
+                :email => 'frank@castle.com',
+                :profile_id => 2,
+                :name => 'user',
+                :state => 'active'})
+end
+
+
 Given /^the blog is set up$/ do
   Blog.default.update_attributes!({:blog_name => 'Teh Blag',
                                    :base_url => 'http://localhost:3000'});

@@ -17,7 +17,11 @@ module NavigationHelpers
       '/'
     when /^the new article page$/
       '/admin/content/new'
-
+    when /^the content page$/
+       '/admin/content'
+    when /^the edit page$/
+      a=Article.find_by_user_id(session[:user_id])
+      '/admin/content/edit/'+a.id.to_s
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
