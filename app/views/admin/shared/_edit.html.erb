@@ -6,7 +6,7 @@
 <% end %>
 
 <%  if current_user.profile_id==1 %>
-    <h3>Merge Article</h3>
+    <h3>Merge Articles</h3>
     <p class='help-block'>Since you are an administrator, you can merge the content of two articles.</p>
     <%= form_tag(form_action, :id => "merge_with", :enctype => "multipart/form-data", :class => className) do %>
         <label for="merge_article_id">Article ID</label>
