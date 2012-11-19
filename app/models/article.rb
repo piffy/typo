@@ -23,6 +23,9 @@ class Article < Content
   has_many :categories, :through => :categorizations
   has_many :triggers, :as => :pending_item
 
+  has_many :mergings
+  has_many :mergeds, :through => :mergings
+
   has_many :comments,   :dependent => :destroy, :order => "created_at ASC" do
 
     # Get only ham or presumed_ham comments
@@ -416,6 +419,14 @@ class Article < Content
     user.admin? || user_id == user.id
   end
 
+
+  def merge_with(article_id)
+    a=Article.find(id)
+    return if a.nil?
+    merging = self.mergings.build(:merged_id => article_id)
+    return merging.save
+  end
+
   protected
 
   def set_published_at
@@ -466,4 +477,5 @@ class Article < Content
     to = to - 1 # pull off 1 second so we don't overlap onto the next day
     return from..to
   end
+
 end
