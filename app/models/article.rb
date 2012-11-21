@@ -217,14 +217,12 @@ class Article < Content
 
   def html(type)
     s=""
-    #if self.class.method_defined? :mergings
     if self.is_a?(Article) &&     self.mergings.count>0
       self.mergeds.each do |a|
       s=s+a.html(type)
     end
 
     end
-
     super(type)   + s
   end
 
