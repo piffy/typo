@@ -7,13 +7,18 @@ Feature: Merge Articles
   Background:
     Given the blog is set up
     And a non-admin user exists
+    And an article has been posted
+    And a second article has been posted
 
 
   Scenario: Administrator can Merge articles
     And I am logged into the admin panel
-    Given an article has been posted
     And I am on the edit page
     Then I should see "Merge Articles"
+    When I fill the second article id
+    And I press "Merge"
+    Then I should see "Articles merged"
+    When I am on the view page
     * show me the page
 
 

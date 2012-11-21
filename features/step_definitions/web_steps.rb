@@ -50,6 +50,23 @@ Given /^an article has been posted$/ do
 
 end
 
+Given /^a second article has been posted$/ do
+  a=Article.new( { :title=>"A not-so-big article",
+                   :body=> 'More interesting stuff',
+                   :permalink => 'a-big-article',
+                   :user => User.first,
+                   :allow_comments=>true,
+                   :published =>  true
+                 })
+  a.save!
+
+end
+
+When /^I fill the second article id$/ do
+  a=Article.last.id
+  fill_in 'merge_article_id', :with => a
+end
+
 Given /^a non\-admin is logged into the admin panel$/ do
   visit '/accounts/login'
   fill_in 'user_login', :with => 'user'

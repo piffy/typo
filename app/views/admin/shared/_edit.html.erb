@@ -16,6 +16,14 @@
 
         <input type="submit" name="Merge" value="Merge" class="btn">
 
+
+        
+    <% end %>
+    <% if @article.mergeds.any?  %>
+        Merged articles:
+        <% @article.mergeds.each do |a| %>
+            <%= a.id %>
+        <% end %>
     <% end %>
 
 <% end %>

@@ -20,8 +20,11 @@ module NavigationHelpers
     when /^the content page$/
        '/admin/content'
     when /^the edit page$/
-      a=Article.find_by_user_id(session[:user_id])
+      a=Article.first
       '/admin/content/edit/'+a.id.to_s
+      when /^the view page$/
+        a=Article.first
+        a.permalink_by_format
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
