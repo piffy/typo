@@ -19,7 +19,6 @@ Feature: Merge Articles
     And I press "Merge"
     Then I should see "Articles merged"
     When I am on the view page
-    * show me the page
 
 
   Scenario:
@@ -31,7 +30,6 @@ Feature: Merge Articles
   Scenario: A non-admin cannot merge two articles
     Given a non-admin is logged into the admin panel
     And I am on the edit page
-    * show me the page
     Then I should not see "Merge Articles"
     #And I am on the edit page
 

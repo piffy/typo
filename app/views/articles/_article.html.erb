@@ -1,6 +1,13 @@
 <div id="article-<%= article.id %>">
-  <h2 class='page-header'><%= (controller.controller_name == 'redirect') ? article.title : link_to_permalink(article,article.title) %></h2>
+  <h2 class='page-headerrrrrr'><%= (controller.controller_name == 'redirect') ? article.title : link_to_permalink(article,article.title) %></h2>
   <%= render 'articles/protected_article_content', { :article => article } %>
+  <% if article.mergings.any  %>
+  <% article.mergeds.each do |a| %>
+          <%= render 'articles/protected_article_content', { :article => a } %>
+  <% end %>
+  <% end %>
+  
+  
 
   <div class='meta'>
     <p>

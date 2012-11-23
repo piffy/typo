@@ -215,16 +215,16 @@ class Article < Content
     blog.url_for(:controller => "/admin/content", :action =>"destroy", :id => id)
   end
 
-  def html(type)
-    s=""
-    if self.is_a?(Article) &&     self.mergings.count>0
-      self.mergeds.each do |a|
-      s=s+a.html(type)
-    end
+  #def html(type)
+    #s=""
+    #if self.is_a?(Article) &&     self.mergings.count>0
+    #  self.mergeds.each do |a|
+    #  s=s+a.html(type)
+    #end
 
-    end
-    super(type)   + s
-  end
+    #end
+    #super(type) #  + s
+  #end
 
   def html_urls
     urls = Array.new

@@ -2,6 +2,13 @@
   <h1 class='page-header'><%= link_to_permalink(@article,@article.title) %></h1>
   <%= @article.html(:body) %>
   <%= @article.html(:extended) %>
+  <h4>This is the merged part:</h4>
+  <% if @article.mergings.any  %>
+      <% @article.mergeds.each do |a| %>
+          <%= @article.html(:body) %>
+      <% end %>
+  <% end %>
+
 
   <div class='meta'>
     <p>

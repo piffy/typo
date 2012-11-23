@@ -22,9 +22,11 @@ module NavigationHelpers
     when /^the edit page$/
       a=Article.first
       '/admin/content/edit/'+a.id.to_s
-      when /^the view page$/
-        a=Article.first
-        a.permalink_by_format
+    when /^the view page$/
+       a=Article.first
+       a.permalink_by_format
+    when /^the categories page$/
+      '/admin/categories'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
