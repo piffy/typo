@@ -2,7 +2,7 @@ class MergingsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
 
-    if @article.merge_with(params[:merge_article_id])
+    if @article.merge_with(params[:merge_id])
       flash[:notice] = "Articles merged."
     else
       flash[:notice] = "Unable to merge articles."

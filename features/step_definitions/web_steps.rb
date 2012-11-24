@@ -72,7 +72,7 @@ end
 
 When /^I fill the second article id$/ do
   a=Article.last.id
-  fill_in 'merge_article_id', :with => a
+  fill_in 'merge_with', :with => a
 end
 
 Then /^I should see the content of both articles$/ do
