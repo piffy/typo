@@ -23,24 +23,16 @@ Feature: Merge Articles
 
   Scenario: Show the merged articles
     Given two articles are merged
-
-
-  #And article "1" has "Comment 1" for comment
-    #And article "2" has "discussion" for comment
     When I am on the view page
     Then I should see "Welcome to Typo"
     And  I should see "More interesting stuff"
 
-    #And I should the comments of both article
 
-
-    #Then I should see "merge_with"
-    #When I fill "merge_with" with the second article id
 
   Scenario: Show the merged comments
     Given two articles are merged
     And article "1" has "Remark" for comment
-    And article "3" has "discussion" for comment
+    And article "4" has "discussion" for comment
     When I am on the view page
     Then I should see "Remark"
     And  I should see "discussion"

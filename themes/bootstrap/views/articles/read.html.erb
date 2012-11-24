@@ -32,7 +32,15 @@
       <a href="#commentform" ref="nofollow"> &raquo;</a>
     </h3>
     <%= render "articles/comment_list" %>
-    <% end -%>
+
+      <% if @article.mergeds.any? %>
+          <%  @article.mergeds.each do |a|  %>
+              <%= render "articles/comment_merged_list", :merged => a %>
+          <% end %>
+      <% end %>
+
+
+<% end -%>
 
     <%= render 'articles/comment_form' if @article.allow_comments? %>
 
