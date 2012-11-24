@@ -35,6 +35,14 @@ Then /^I should see "([^"]*)" within "([^"]*)"$/ do |text, selector|
   page.should have_css(selector, :text => text)
 end
 
+And /^article "(.*?)" has "(.*?)" for comment$/ do |article_id, text|
+  a=Article.find(article_id)
+  c=    Comment.new({:author => 'Me',
+                     :article => a,
+                     :body => text,
+                     :ip => '1.2.3.4'})
+  c.save
+end
 
 
 Given /^an article has been posted$/ do
@@ -66,6 +74,18 @@ When /^I fill the second article id$/ do
   a=Article.last.id
   fill_in 'merge_article_id', :with => a
 end
+
+Then /^I should see the content of both articles$/ do
+  #pending # express the regexp above with the code you wish you had
+end
+
+
+Given /^two articles are merged$/ do
+  a=Article.last.id
+  b=Article.first
+  b.merge_with(a)
+end
+
 
 Given /^a non\-admin is logged into the admin panel$/ do
   visit '/accounts/login'

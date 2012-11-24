@@ -1,6 +1,14 @@
 <div class="article" id="article-<%= @article.id %>">
   <h1 class='page-header'><%= link_to_permalink(@article,@article.title) %></h1>
   <%= @article.html(:body) %>
+
+  <% if @article.mergeds.any? %>
+      <!-- h3>Merged content:</h3--->
+      <%  @article.mergeds.each do |a|  %>
+      <%=  a.html(:body)  %>
+      <% end %>
+  <% end %>
+
   <%= @article.html(:extended) %>
 
   <div class='meta'>
