@@ -7,7 +7,7 @@ class MergingsController < ApplicationController
     else
       flash[:notice] = "Unable to merge articles."
     end
-    redirect_to  "/admin/content/edit/"+@article.id.to_s
+    redirect_to  "/admin/content/"
   end
 
   def destroy

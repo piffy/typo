@@ -17,6 +17,7 @@ Feature: Merge Articles
     Then I should see "Merge Articles"
     When I fill the second article id
     And I press "Merge"
+    * show me the page
     Then I should see "Articles merged"
 
 
