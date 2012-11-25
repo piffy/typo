@@ -83,7 +83,8 @@ end
 Given /^two articles are merged$/ do
   a=Article.last.id
   b=Article.first
-  b.merge_with(a)
+  c=b.merge_with(a)
+  c.save
 end
 
 

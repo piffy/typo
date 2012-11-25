@@ -432,10 +432,21 @@ class Article < Content
 
 
   def merge_with(article_id)
-    a=Article.find(id)
-    return if a.nil?
-    merging = self.mergings.build(:merged_id => article_id)
-    return merging.save
+    a=Article.find(article_id)
+    return if a.nil? || self.id == article_id #cannot be recursive!
+    b=self
+    b.body = b.body + a.body
+    if a.comments.any?
+      a.comments.each do |com|
+
+      end
+    end
+
+    if b.save
+      #puts "destroy"
+      a.destroy
+    end
+    return  b
   end
 
   protected
